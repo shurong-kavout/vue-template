@@ -3,6 +3,14 @@ import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 
+const resCode = {
+  'OK': 0, // 请求成功
+  'ERR': -100, // 其他错误
+  'ILLEGAL_TOKEN': -101, // 非法的 Token
+  'OTHER_LOGGED': -102, // 在其他客户端登录
+  'EXPIRED_TOKEN': -103 // Token 已过期
+}
+
 // create an axios instance
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
@@ -45,16 +53,15 @@ service.interceptors.response.use(
   response => {
     const res = response.data
 
-    // if the custom code is not 20000, it is judged as an error.
-    if (res.code !== 20000) {
+    // if the custom code is not 0, it is judged as an error.
+    if (res.code !== resCode.OK) {
       Message({
         message: res.message || 'Error',
         type: 'error',
         duration: 5 * 1000
       })
 
-      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-      if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
+      if (res.code === resCode.ILLEGAL_TOKEN || res.code === resCode.OTHER_LOGGED || res.code === resCode.EXPIRED_TOKEN) {
         // to re-login
         MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
           confirmButtonText: 'Re-Login',

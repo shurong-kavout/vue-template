@@ -12,13 +12,13 @@ const users = {
   'admin-token': {
     roles: ['admin'],
     introduction: 'I am a super administrator',
-    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    avatar: 'http://webapplayers.com/inspinia_admin-v2.8/img/profile_small.jpg',
     name: 'Super Admin'
   },
   'editor-token': {
     roles: ['editor'],
     introduction: 'I am an editor',
-    avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+    avatar: 'http://webapplayers.com/inspinia_admin-v2.8/img/profile_small.jpg',
     name: 'Normal Editor'
   }
 }
@@ -26,7 +26,7 @@ const users = {
 module.exports = [
   // user login
   {
-    url: '/vue-admin-template/user/login',
+    url: '/user/login',
     type: 'post',
     response: config => {
       const { username } = config.body
@@ -35,13 +35,13 @@ module.exports = [
       // mock error
       if (!token) {
         return {
-          code: 60204,
+          code: -101,
           message: 'Account and password are incorrect.'
         }
       }
 
       return {
-        code: 20000,
+        code: 0,
         data: token
       }
     }
@@ -49,7 +49,7 @@ module.exports = [
 
   // get user info
   {
-    url: '/vue-admin-template/user/info\.*',
+    url: '/user/info\.*',
     type: 'get',
     response: config => {
       const { token } = config.query
@@ -58,13 +58,13 @@ module.exports = [
       // mock error
       if (!info) {
         return {
-          code: 50008,
+          code: -1,
           message: 'Login failed, unable to get user details.'
         }
       }
 
       return {
-        code: 20000,
+        code: 0,
         data: info
       }
     }
@@ -72,11 +72,11 @@ module.exports = [
 
   // user logout
   {
-    url: '/vue-admin-template/user/logout',
+    url: '/user/logout',
     type: 'post',
     response: _ => {
       return {
-        code: 20000,
+        code: 0,
         data: 'success'
       }
     }

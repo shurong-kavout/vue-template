@@ -31,20 +31,24 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [
+  // No layout
   {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
   },
 
+  // No layout
   {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
   },
 
+  // Has layout
   {
     path: '/',
+    // 可以选择不同的 layout 组件
     component: Layout,
     redirect: '/dashboard',
     children: [{
