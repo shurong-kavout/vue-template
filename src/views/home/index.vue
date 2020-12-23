@@ -1,6 +1,7 @@
 <template>
   <div class="home-container">
     <!-- <div class="home-text">{{ name }}</div> -->
+    <h1>HOME</h1>
   </div>
 </template>
 

@@ -54,37 +54,25 @@ export const constantRoutes = [
   },
   {
     path: '/',
-    // 可以选择不同的 layout 组件
     component: Layout,
-    redirect: '/home',
-    children: [{
-      path: 'home',
-      name: 'Home',
-      component: () => import('@/views/home/index'),
-      meta: { title: 'Home', icon: 'el-icon-s-home' }
-    }]
+    redirect: '/portfolio/screening',
+    name: 'Alpha Portfolio',
+    meta: { title: 'Portfolio', icon: 'el-icon-s-marketing' },
+    children: [
+      {
+        path: 'portfolio/screening',
+        name: 'Screening',
+        component: () => import('@/views/portfolio/screening'),
+        meta: { title: 'Screening', icon: 'el-icon-search' }
+      },
+      {
+        path: 'portfolio/backtesting',
+        name: 'Backtesting',
+        component: () => import('@/views/portfolio/backtesting'),
+        meta: { title: 'Backtesting', icon: 'el-icon-cpu' }
+      }
+    ]
   },
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/portfolio/screening',
-  //   name: 'Alpha Portfolio',
-  //   meta: { title: 'Portfolio', icon: 'el-icon-s-marketing' },
-  //   children: [
-  //     {
-  //       path: 'portfolio/screening',
-  //       name: 'Screening',
-  //       component: () => import('@/views/table/index'),
-  //       meta: { title: 'Screening', icon: 'el-icon-search' }
-  //     },
-  //     {
-  //       path: 'portfolio/backtesting',
-  //       name: 'Backtesting',
-  //       component: () => import('@/views/tree/index'),
-  //       meta: { title: 'Backtesting', icon: 'el-icon-cpu' }
-  //     }
-  //   ]
-  // },
   {
     path: '/table',
     component: Layout,
@@ -92,7 +80,7 @@ export const constantRoutes = [
       {
         path: 'index',
         name: 'Table',
-        component: () => import('@/views/table/index'),
+        component: () => import('@/views/portfolio/backtesting'),
         meta: { title: 'Table', icon: 'table' }
       }
     ]
