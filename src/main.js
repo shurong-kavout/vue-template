@@ -17,7 +17,6 @@ import '@/permission' // permission control
 
 import * as filters from './filters' // global filters
 
-// 通过环境变量来判断是否需要加载启用
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -26,13 +25,8 @@ import * as filters from './filters' // global filters
  * Currently MockJs will be used in the production environment,
  * please remove it before going online ! ! !
  */
-// if (process.env.NODE_ENV === 'production') {
-//   const { mockXHR } = require('../mock')
-//   mockXHR()
-// }
-
-// 只有在本地环境之中才会引入 mock 数据
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
+  // development 不会在控制台展示 Network
   const { mockXHR } = require('../mock')
   mockXHR()
 }
