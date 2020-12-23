@@ -158,7 +158,7 @@ export const constantRoutes = [
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+        path: 'http://47.252.51.154:6500/', // streamlit demo
         meta: { title: 'External Link', icon: 'link' }
       }
     ]
