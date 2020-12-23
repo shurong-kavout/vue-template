@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">Login Form</h3>
+        <h3 class="title">Alpha Portfolio</h3>
       </div>
 
       <el-form-item prop="username">
@@ -41,11 +41,10 @@
         </span>
       </el-form-item>
 
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
+      <el-button :loading="loading" type="primary" plain style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
 
       <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: any</span>
+        <!-- <span style="margin-right:20px;">username: admin</span><span> password: any</span> -->
       </div>
 
     </el-form>
@@ -173,14 +172,12 @@ $cursor: #fff;
 </style>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
-$dark_gray:#889aa4;
 $light_gray:#eee;
 
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
+  background: linear-gradient(45deg, #665fee 0%, #27c2de 100%);
   overflow: hidden;
 
   .login-form {
@@ -206,7 +203,7 @@ $light_gray:#eee;
 
   .svg-container {
     padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    color: $light_gray;
     vertical-align: middle;
     width: 30px;
     display: inline-block;
@@ -220,7 +217,7 @@ $light_gray:#eee;
       color: $light_gray;
       margin: 0px auto 40px auto;
       text-align: center;
-      font-weight: bold;
+      font-weight: normal;
     }
   }
 
@@ -229,7 +226,7 @@ $light_gray:#eee;
     right: 10px;
     top: 7px;
     font-size: 16px;
-    color: $dark_gray;
+    color: $light_gray;
     cursor: pointer;
     user-select: none;
   }

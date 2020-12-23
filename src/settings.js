@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Alpha Portfolio',
+  title: 'Kavout',
 
   /**
    * @type {boolean} true | false

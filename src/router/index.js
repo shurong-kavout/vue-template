@@ -47,40 +47,62 @@ export const constantRoutes = [
     component: () => import('@/views/login/index'),
     hidden: true
   },
-  // No layout
   {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
   },
-  // Has layout
   {
     path: '/',
     // 可以选择不同的 layout 组件
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/home',
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      path: 'home',
+      name: 'Home',
+      component: () => import('@/views/home/index'),
+      meta: { title: 'Home', icon: 'el-icon-s-home' }
     }]
   },
   {
-    path: '/example',
+    path: '/',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/portfolio/screening',
+    name: 'Alpha Portfolio',
+    meta: { title: 'Portfolio', icon: 'el-icon-s-marketing' },
     children: [
       {
-        path: 'table',
+        path: 'portfolio/screening',
+        name: 'Screening',
+        component: () => import('@/views/table/index'),
+        meta: { title: 'Screening', icon: 'el-icon-search' }
+      },
+      {
+        path: 'portfolio/backtesting',
+        name: 'Backtesting',
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'Backtesting', icon: 'el-icon-cpu' }
+      }
+    ]
+  },
+  {
+    path: '/table',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
         name: 'Table',
         component: () => import('@/views/table/index'),
         meta: { title: 'Table', icon: 'table' }
-      },
+      }
+    ]
+  },
+  {
+    path: '/tree',
+    component: Layout,
+    children: [
       {
-        path: 'tree',
+        path: 'index',
         name: 'Tree',
         component: () => import('@/views/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }

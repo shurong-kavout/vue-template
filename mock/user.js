@@ -13,13 +13,13 @@ const users = {
     roles: ['admin'],
     introduction: 'I am a super administrator',
     avatar: 'http://webapplayers.com/inspinia_admin-v2.8/img/profile_small.jpg',
-    name: 'Super Admin'
+    name: 'Tony'
   },
   'editor-token': {
     roles: ['editor'],
     introduction: 'I am an editor',
     avatar: 'http://webapplayers.com/inspinia_admin-v2.8/img/profile_small.jpg',
-    name: 'Normal Editor'
+    name: 'Lucy'
   }
 }
 
