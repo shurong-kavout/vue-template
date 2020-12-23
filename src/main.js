@@ -15,7 +15,7 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
-// import * as filters from './filters' // global filters
+import * as filters from './filters' // global filters
 
 // 通过环境变量来判断是否需要加载启用
 /**
@@ -41,6 +41,11 @@ if (process.env.NODE_ENV === 'development') {
 Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
+
+// register global utility filters
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 Vue.config.productionTip = false
 

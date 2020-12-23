@@ -11,6 +11,8 @@ const resCode = {
   'EXPIRED_TOKEN': -103 // Token 已过期
 }
 
+// axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
+
 // create an axios instance
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
@@ -28,6 +30,7 @@ service.interceptors.request.use(
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
       config.headers['X-Token'] = getToken()
+      // config.headers['Authorization'] = 'kavout' + getToken()
     }
     return config
   },

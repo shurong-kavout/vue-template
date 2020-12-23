@@ -31,20 +31,28 @@ import Layout from '@/layout'
  * all roles can be accessed
  */
 export const constantRoutes = [
-  // No layout
+  {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect/index')
+      }
+    ]
+  },
   {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
   },
-
   // No layout
   {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
   },
-
   // Has layout
   {
     path: '/',
@@ -58,7 +66,6 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
-
   {
     path: '/example',
     component: Layout,
