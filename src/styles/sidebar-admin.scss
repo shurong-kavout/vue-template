@@ -1,97 +1,102 @@
 #app {
 
-  .main-container {
-    min-height: 100%;
-    transition: margin-left .28s;
-    margin-left: $sideBarWidth;
-    position: relative;
-  }
+  .admin-layout {
 
-  .sidebar-container {
-    transition: width 0.28s;
-    width: $sideBarWidth !important;
-    background-color: $menuBg;
-    height: 100%;
-    position: fixed;
-    font-size: 0px;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1001;
-    overflow: hidden;
-
-    // reset element-ui css
-    .horizontal-collapse-transition {
-      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
-    }
-
-    .scrollbar-wrapper {
-      overflow-x: hidden !important;
-    }
-
-    .el-scrollbar__bar.is-vertical {
-      right: 0px;
-    }
-
-    .el-scrollbar {
+    // 展开导航
+    .sidebar-container {
+      transition: width 0.28s;
+      width: $sideBarWidth !important;
+      background-color: $menuBg;
       height: 100%;
-    }
-
-    &.has-logo {
-      .el-scrollbar {
-        height: calc(100% - 50px);
-      }
-    }
-
-    .is-horizontal {
-      display: none;
-    }
-
-    a {
-      display: inline-block;
-      width: 100%;
+      position: fixed;
+      font-size: 0px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1001;
       overflow: hidden;
-    }
 
-    .svg-icon {
-      margin-right: 16px;
-    }
+      // reset element-ui css
+      .horizontal-collapse-transition {
+        transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+      }
 
-    .sub-el-icon {
-      margin-right: 12px;
-      margin-left: -2px;
-    }
+      .scrollbar-wrapper {
+        overflow-x: hidden !important;
+      }
 
-    .el-menu {
-      border: none;
-      height: 100%;
-      width: 100% !important;
-    }
+      .el-scrollbar__bar.is-vertical {
+        right: 0px;
+      }
 
-    // menu hover
-    .submenu-title-noDropdown,
-    .el-submenu__title {
-      &:hover {
-        background-color: $menuHover !important;
+      .el-scrollbar {
+        height: 100%;
+      }
+
+      &.has-logo {
+        .el-scrollbar {
+          height: calc(100% - 50px);
+        }
+      }
+
+      .is-horizontal {
+        display: none;
+      }
+
+      a {
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .svg-icon {
+        margin-right: 16px;
+      }
+
+      .sub-el-icon {
+        margin-right: 12px;
+        margin-left: -2px;
+      }
+
+      .el-menu {
+        border: none;
+        height: 100%;
+        width: 100% !important;
+      }
+
+      // menu hover
+      .submenu-title-noDropdown,
+      .el-submenu__title {
+        &:hover {
+          background-color: $menuHover !important;
+        }
+      }
+
+      .is-active>.el-submenu__title {
+        color: $subMenuActiveText !important;
+      }
+
+      & .nest-menu .el-submenu>.el-submenu__title,
+      & .el-submenu .el-menu-item {
+        min-width: $sideBarWidth !important;
+        background-color: $subMenuBg !important;
+
+        &:hover {
+          background-color: $subMenuHover !important;
+        }
       }
     }
 
-    .is-active>.el-submenu__title {
-      color: $subMenuActiveText !important;
-    }
-
-    & .nest-menu .el-submenu>.el-submenu__title,
-    & .el-submenu .el-menu-item {
-      min-width: $sideBarWidth !important;
-      background-color: $subMenuBg !important;
-
-      &:hover {
-        background-color: $subMenuHover !important;
-      }
+    .main-container {
+      min-height: 100%;
+      transition: margin-left .28s;
+      margin-left: $sideBarWidth;
+      position: relative;
     }
   }
 
-  .hideSidebar {
+  // 收起导航
+  .admin-layout.hideSidebar {
     .sidebar-container {
       width: 54px !important;
     }
@@ -152,12 +157,14 @@
     }
   }
 
-  .el-menu--collapse .el-menu .el-submenu {
-    min-width: $sideBarWidth !important;
+  .admin-layout {
+    .el-menu--collapse .el-menu .el-submenu {
+      min-width: $sideBarWidth !important;
+    }
   }
 
-  // mobile responsive
-  .mobile {
+  // 小屏适配
+  .admin-layout.mobile {
     .main-container {
       margin-left: 0px;
     }
@@ -176,17 +183,16 @@
     }
   }
 
-  .withoutAnimation {
-
-    .main-container,
-    .sidebar-container {
+  .admin-layout.withoutAnimation {
+    .main-container, .sidebar-container {
       transition: none;
     }
   }
+
 }
 
 // when menu collapsed
-.el-menu--vertical {
+.admin-layout.el-menu--vertical {
   &>.el-menu {
     .svg-icon {
       margin-right: 16px;

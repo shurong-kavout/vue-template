@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 /* Layout */
+// import Layout from '@/layout/admin'
 import Layout from '@/layout/home'
 
 /**
@@ -55,24 +56,78 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/portfolio/screening',
-    name: 'Alpha Portfolio',
-    meta: { title: 'Portfolio', icon: 'el-icon-s-marketing' },
+    redirect: '/home'
+    // children: [
+    //   {
+    //     path: 'home',
+    //     component: () => import('@/views/home/index'),
+    //     name: 'Home',
+    //     meta: { title: 'Home', icon: 'el-icon-s-home', affix: true }
+    //   }
+    // ]
+  },
+  // {
+  //   path: '/home',
+  //   component: Layout,
+  //   redirect: '/portfolio'
+  // },
+  // {
+  //   path: '/portfolio',
+  //   component: Layout,
+  //   redirect: '/portfolio/screening',
+  //   meta: {
+  //     title: 'Portfolio',
+  //     icon: 'el-icon-s-marketing'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'screening',
+  //       name: 'Screening',
+  //       component: () => import('@/views/portfolio/screening'),
+  //       meta: { title: 'Screening', icon: 'el-icon-search' }
+  //     },
+  //     {
+  //       path: 'backtesting',
+  //       name: 'Backtesting',
+  //       component: () => import('@/views/portfolio/backtesting'),
+  //       meta: { title: 'Backtesting', icon: 'el-icon-cpu' }
+  //     }
+  //   ]
+  // },
+
+  {
+    path: '/home',
+    redirect: '/portfolio/screening'
+  },
+  {
+    path: '/portfolio',
+    redirect: '/portfolio/screening'
+  },
+  {
+    path: '/portfolio/screening',
+    component: Layout,
     children: [
       {
-        path: 'portfolio/screening',
+        path: '',
         name: 'Screening',
         component: () => import('@/views/portfolio/screening'),
         meta: { title: 'Screening', icon: 'el-icon-search' }
-      },
+      }
+    ]
+  },
+  {
+    path: '/portfolio/backtesting',
+    component: Layout,
+    children: [
       {
-        path: 'portfolio/backtesting',
+        path: '',
         name: 'Backtesting',
         component: () => import('@/views/portfolio/backtesting'),
         meta: { title: 'Backtesting', icon: 'el-icon-cpu' }
       }
     ]
   },
+
   {
     path: '/table',
     component: Layout,
@@ -80,75 +135,74 @@ export const constantRoutes = [
       {
         path: 'index',
         name: 'Table',
-        component: () => import('@/views/portfolio/backtesting'),
+        component: () => import('@/views/table/index'),
         meta: { title: 'Table', icon: 'table' }
       }
     ]
   },
-  {
-    path: '/tree',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
+  // {
+  //   path: '/tree',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Tree',
+  //       component: () => import('@/views/tree/index'),
+  //       meta: { title: 'Tree', icon: 'tree' }
+  //     }
+  //   ]
+  // },
 
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' }
-          }
-        ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: 'Form', icon: 'form' }
+  //     }
+  //   ]
+  // },
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: {
+  //     title: 'Nested',
+  //     icon: 'nested'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'menu1',
+  //       component: () => import('@/views/nested/menu1/index'), // Parent router-view
+  //       name: 'Menu1',
+  //       meta: { title: 'Menu1' },
+  //       children: [
+  //         {
+  //           path: 'menu1-1',
+  //           component: () => import('@/views/nested/menu1/menu1-1'),
+  //           name: 'Menu1-1',
+  //           meta: { title: 'Menu1-1' }
+  //         },
+  //         {
+  //           path: 'menu1-2',
+  //           component: () => import('@/views/nested/menu1/menu1-2'),
+  //           name: 'Menu1-2',
+  //           meta: { title: 'Menu1-2' }
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: 'menu2',
+  //       component: () => import('@/views/nested/menu2/index'),
+  //       name: 'Menu2',
+  //       meta: { title: 'menu2' }
+  //     }
+  //   ]
+  // },
 
   {
     path: 'external-link',
@@ -156,7 +210,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'http://47.252.51.154:6500/', // streamlit demo
-        meta: { title: 'External Link', icon: 'link' }
+        meta: { title: 'Streamlit', icon: 'link' }
       }
     ]
   },

@@ -1,6 +1,10 @@
 <template>
-  <div :class="classObj" class="app-wrapper">
-    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
+  <div :class="classObj" class="admin-layout">
+    <div
+      v-if="device==='mobile'&&sidebar.opened"
+      class="mask-bg"
+      @click="handleClickOutside"
+    />
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
@@ -54,17 +58,19 @@ export default {
   @import "~@/styles/mixin.scss";
   @import "~@/styles/variables.scss";
 
-  .app-wrapper {
+  .admin-layout {
     @include clearfix;
     position: relative;
     height: 100%;
     width: 100%;
+
     &.mobile.openSidebar{
       position: fixed;
       top: 0;
     }
   }
-  .drawer-bg {
+
+  .mask-bg {
     background: #000;
     opacity: 0.3;
     width: 100%;

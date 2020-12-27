@@ -1,0 +1,32 @@
+@import "~@/styles/mixin.scss";
+@import "~@/styles/variables.scss";
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+
+  // 只针对左右分选布局，解决两边滚动相互影响问题
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+
+  .main-panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: auto;
+    align-items: center;
+
+    background: #ffffff;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import VueScreen from 'vue-screen'
 
 import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 
@@ -35,6 +36,9 @@ if (process.env.NODE_ENV === 'production') {
 Vue.use(ElementUI, { locale })
 // 如果想要中文版 element-ui，按如下方式声明
 // Vue.use(ElementUI)
+
+// Reactive window size and media query states
+Vue.use(VueScreen, 'bootstrap')
 
 // register global utility filters
 Object.keys(filters).forEach(key => {

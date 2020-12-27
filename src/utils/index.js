@@ -282,6 +282,20 @@ export function debounce(func, wait, immediate) {
   }
 }
 
+export function throttle(fn) {
+  let isRunning = false
+  return function() {
+    if (isRunning) {
+      return
+    }
+    isRunning = true
+    window.requestAnimationFrame(() => {
+      fn()
+      isRunning = false
+    })
+  }
+}
+
 /**
  * This is just a simple version of deep copy
  * Has a lot of edge cases bug
@@ -351,3 +365,22 @@ export function removeClass(ele, cls) {
     ele.className = ele.className.replace(reg, ' ')
   }
 }
+
+export function formatDecimal(number, decimalPlace = 2) {
+  return parseFloat(Math.round(number * 100) / 100).toFixed(decimalPlace)
+}
+
+export function formatSeparate(number) {
+  return String(number).replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
+}
+
+export function toPascal(name) {
+  return name
+    .replace(/^./, function(char) {
+      return char.toUpperCase()
+    })
+    .replace(/_./g, function(char) {
+      return ' ' + char[1].toUpperCase()
+    })
+}
+

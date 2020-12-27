@@ -1,9 +1,14 @@
 <template>
   <div class="navbar">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-
+    <!-- 菜单栏开关 -->
+    <hamburger
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+      @toggleClick="toggleSideBar"
+    />
+    <!-- 面包屑 -->
     <breadcrumb class="breadcrumb-container" />
-
+    <!-- Log Out 菜单 -->
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -12,9 +17,7 @@
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
-            <el-dropdown-item>
-              Home
-            </el-dropdown-item>
+            <el-dropdown-item>Home</el-dropdown-item>
           </router-link>
           <a target="_blank" href="https://www.kavout.com/who-we-are/">
             <el-dropdown-item>About</el-dropdown-item>

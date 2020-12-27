@@ -1,9 +1,10 @@
+@import './toolkit.scss';
 @import './variables.scss';
 @import './mixin.scss';
 @import './transition.scss';
 @import './element-ui.scss';
-@import './sidebar.scss'; // for admin layout
-@import './navbar.scss'; // for home layout
+@import './sidebar-admin.scss';
+@import './topbar-home.scss';
 @import './btn.scss';
 
 body {
