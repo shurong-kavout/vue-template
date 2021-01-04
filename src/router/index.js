@@ -111,7 +111,7 @@ export const constantRoutes = [
         path: '',
         name: 'Screening',
         component: () => import('@/views/portfolio/screening'),
-        meta: { title: 'Screening', icon: 'el-icon-search' }
+        meta: { title: 'Screening', icon: 'el-icon-s-marketing' }
       }
     ]
   },
@@ -128,18 +128,18 @@ export const constantRoutes = [
     ]
   },
 
-  {
-    path: '/table',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      }
-    ]
-  },
+  // {
+  //   path: '/table',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Table',
+  //       component: () => import('@/views/table/index'),
+  //       meta: { title: 'Table', icon: 'table' }
+  //     }
+  //   ]
+  // },
   // {
   //   path: '/tree',
   //   component: Layout,

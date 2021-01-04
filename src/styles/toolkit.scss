@@ -43,6 +43,10 @@
   font-weight: bold;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .regular {
   font-weight: normal;
 }
@@ -78,7 +82,7 @@
 
 .clearfix:before,
 .clearfix:after {
-  content: " ";
+  content: ' ';
   display: table;
 }
 
@@ -303,7 +307,6 @@
 .display-none {
   display: none;
 }
-
 
 /* Flex 布局在加上厂商前缀情况下, 可以兼容到 IE10 */
 /* 参考 https://caniuse.com/#search=flex */

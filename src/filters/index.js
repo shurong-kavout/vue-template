@@ -66,3 +66,19 @@ export function toThousandFilter(num) {
 export function uppercaseFirst(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
+
+/**
+ * abc_de => AbcDe
+ * @param {String} string
+ */
+export function toPascalCase(str) {
+  return str.replace(/(^|_)(\w)/g, (m, $1, $2) => $2.toUpperCase())
+}
+
+/**
+ * 10000.123456 => "10000.12"
+ * @param {number} num
+ */
+export function formatDecimal(number, decimalPlace = 2) {
+  return parseFloat(Math.round(number * 100) / 100).toFixed(decimalPlace)
+}

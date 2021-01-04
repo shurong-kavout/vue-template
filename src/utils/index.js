@@ -41,7 +41,7 @@ export function parseTime(time, cFormat) {
   const time_str = format.replace(/{([ymdhisa])+}/g, (result, key) => {
     const value = formatObj[key]
     // Note: getDay() returns 0 on Sunday
-    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value ] }
+    if (key === 'a') { return ['日', '一', '二', '三', '四', '五', '六'][value] }
     return value.toString().padStart(2, '0')
   })
   return time_str
@@ -250,7 +250,7 @@ export function getTime(type) {
 export function debounce(func, wait, immediate) {
   let timeout, args, context, timestamp, result
 
-  const later = function() {
+  const later = function () {
     // 据上一次触发时间间隔
     const last = +new Date() - timestamp
 
@@ -267,7 +267,7 @@ export function debounce(func, wait, immediate) {
     }
   }
 
-  return function(...args) {
+  return function (...args) {
     context = this
     timestamp = +new Date()
     const callNow = immediate && !timeout
@@ -284,7 +284,7 @@ export function debounce(func, wait, immediate) {
 
 export function throttle(fn) {
   let isRunning = false
-  return function() {
+  return function () {
     if (isRunning) {
       return
     }
@@ -366,8 +366,8 @@ export function removeClass(ele, cls) {
   }
 }
 
-export function formatDecimal(number, decimalPlace = 2) {
-  return parseFloat(Math.round(number * 100) / 100).toFixed(decimalPlace)
+export function formatDecimal(number, decimal = 2) {
+  return parseFloat(Math.round(number * 100) / 100).toFixed(decimal)
 }
 
 export function formatSeparate(number) {
@@ -376,11 +376,14 @@ export function formatSeparate(number) {
 
 export function toPascal(name) {
   return name
-    .replace(/^./, function(char) {
+    .replace(/^./, function (char) {
       return char.toUpperCase()
     })
-    .replace(/_./g, function(char) {
+    .replace(/_./g, function (char) {
       return ' ' + char[1].toUpperCase()
     })
 }
 
+export function toPercent(number, decimal = 2) {
+  return parseFloat(Math.round(number * 10000) / 100).toFixed(decimal) + '%'
+}

@@ -1,13 +1,13 @@
 <template>
   <div :class="{ collapsed }" class="left-panel">
     <button class="handler open" @click="collapsed = false">
-      <i class="el-icon-arrow-right" />
+      <i class="el-icon-arrow-right"></i>
     </button>
     <button class="handler close" @click="collapsed = true">
-      <i class="el-icon-close" />
+      <i class="el-icon-close"></i>
     </button>
     <div class="panel-content">
-      <slot />
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -37,5 +37,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './LeftPanel.scss';
+@import './styles/LeftPanel.scss';
 </style>

@@ -1,7 +1,16 @@
 module.exports = {
   presets: [
-    // https://github.com/vuejs/vue-cli/tree/master/packages/@vue/babel-preset-app
-    '@vue/cli-plugin-babel/preset'
+    ['@vue/cli-plugin-babel/preset', {
+      useBuiltIns: 'entry',
+      corejs: {
+        version: 3,
+        proposals: true
+      }
+    }]
+  ],
+  'plugins': [
+    '@babel/plugin-proposal-class-properties',
+    '@babel/plugin-transform-runtime'
   ],
   'env': {
     'development': {

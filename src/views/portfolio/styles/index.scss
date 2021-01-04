@@ -1,5 +1,5 @@
-@import "~@/styles/mixin.scss";
-@import "~@/styles/variables.scss";
+// @import '~@/styles/mixin.scss';
+// @import '~@/styles/variables.scss';
 
 .app-container {
   display: flex;
@@ -16,6 +16,11 @@
   bottom: 0;
   overflow: hidden;
 
+  .el-cascader,
+  .el-date-editor {
+    width: 100%;
+  }
+
   .main-panel {
     display: flex;
     flex-direction: column;
@@ -27,6 +32,17 @@
 
     &::-webkit-scrollbar {
       width: 0;
+    }
+
+    .section {
+      display: table-cell;
+      width: 96%;
+      max-height: 500px;
+      margin-top: 30px;
+
+      table {
+        width: 100%;
+      }
     }
   }
 }

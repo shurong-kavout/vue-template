@@ -4,7 +4,7 @@
       v-if="device==='mobile'&&sidebar.opened"
       class="mask-bg"
       @click="handleClickOutside"
-    />
+    ></div>
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
