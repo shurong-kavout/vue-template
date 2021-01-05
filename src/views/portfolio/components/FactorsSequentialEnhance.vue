@@ -15,7 +15,14 @@
       </el-select>
       <el-form ref="form" label-position="top" :model="picknums">
         <el-form-item v-for="[k, v] in Object.entries(picknums)" :key="k" :label="k">
-          <el-input-number :key="k + v" v-model="picknums[k]" size="medium" />
+          <el-input-number
+            :key="k + v"
+            v-model="picknums[k]"
+            :min="pickNumOptions.min_value"
+            :max="pickNumOptions.max_value"
+            :step="pickNumOptions.step"
+            size="medium"
+          />
         </el-form-item>
         <el-form-item>
           <div v-show="!factorsSelected.length" style="height: 20px; margin-bottom: 30px">[ ]</div>
@@ -53,6 +60,12 @@ export default {
         return []
       }
     },
+    pickNumOptions: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
     dataEnhanceFactors: {
       type: Array,
       default() {
@@ -69,8 +82,8 @@ export default {
   },
   watch: {
     factorsSelected: {
-      // deep: true,
-      // immediate: true,
+      deep: true,
+      immediate: true,
       handler: function (newVal, oldVal) {
         this.picknums = this.factorsSelected.reduce((o, k, i) => {
           o[k] = Math.max(50 - i * 10, 5)
@@ -79,7 +92,7 @@ export default {
       }
     },
     enhance_factors: {
-      // deep: true,
+      deep: true,
       immediate: true,
       handler(val) { this.selectorStore.multifactor_sequential.enhance_factors = val }
     }

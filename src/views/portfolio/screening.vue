@@ -178,12 +178,14 @@ export default {
     },
 
     async fetchData() {
-      const apiParams = this.assembleParams()
-      const resp = await fetchScreening(apiParams)
-      if (resp) {
-        if (resp.code === 0) {
+      try {
+        const apiParams = this.assembleParams()
+        const resp = await fetchScreening(apiParams)
+        if (resp && resp.code === 0) {
           this.data = resp.data
         }
+      } catch (err) {
+        console.warn(err)
       }
     }
   }

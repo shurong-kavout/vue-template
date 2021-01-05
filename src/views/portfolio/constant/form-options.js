@@ -23,6 +23,11 @@ const options = {
   'date': '2017-01-01',
   'selector': {
     'multifactor_sequential': {
+      'pick_num': {
+        'min_value': 1,
+        'max_value': 100,
+        'step': 1
+      },
       'lookback': {
         'min_value': 6,
         'max_value': 36,

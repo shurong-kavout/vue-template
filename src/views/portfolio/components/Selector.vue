@@ -22,11 +22,13 @@
         <factors-sequential-enhance
           v-if="is_enhance"
           :factors-options="options.multifactor_sequential.factors"
+          :pick-num-options="options.multifactor_sequential.pick_num"
           :data-enhance-factors="selector.multifactor_sequential.enhance_factors"
         />
         <factors-sequential
           v-else
           :factors-options="options.multifactor_sequential.factors"
+          :pick-num-options="options.multifactor_sequential.pick_num"
           :data-factors="selector.multifactor_sequential.factors"
         />
       </template>

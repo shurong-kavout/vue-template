@@ -244,23 +244,27 @@ export default {
 
     fetchData() {
       const apiParams = this.assembleParams()
-      fetchBacktesting(apiParams).then(resp => {
-        if (resp.code === 0) {
-          const {
-            returns,
-            y_returns,
-            m_returns,
-            pd_weight,
-            return_curve
-          } = resp.data
+      fetchBacktesting(apiParams)
+        .then(resp => {
+          if (resp.code === 0) {
+            const {
+              returns,
+              y_returns,
+              m_returns,
+              pd_weight,
+              return_curve
+            } = resp.data
 
-          this.returns = returns
-          this.y_returns = y_returns
-          this.m_returns = m_returns
-          this.pd_weight = pd_weight
-          this.return_curve = return_curve
-        }
-      })
+            this.returns = returns
+            this.y_returns = y_returns
+            this.m_returns = m_returns
+            this.pd_weight = pd_weight
+            this.return_curve = return_curve
+          }
+        })
+        .catch(err => {
+          console.warn(err)
+        })
     },
 
     formatter_weight(row, column, cellValue) {

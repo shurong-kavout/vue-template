@@ -62,7 +62,7 @@ export default {
   },
   watch: {
     factors: {
-      // deep: true,
+      deep: true,
       immediate: true,
       handler: function (val) { this.selectorStore.multifactor_composite.factors = val }
     },

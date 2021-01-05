@@ -15,11 +15,19 @@
       </el-select>
       <el-form ref="form" label-position="top" :model="picknums">
         <el-form-item v-for="[k, v] in Object.entries(picknums)" :key="k" :label="k">
-          <el-input-number :key="k + v" v-model="picknums[k]" size="medium" />
+          <el-input-number
+            :key="k + v"
+            v-model="picknums[k]"
+            :min="pickNumOptions.min_value"
+            :max="pickNumOptions.max_value"
+            :step="pickNumOptions.step"
+            size="medium"
+          />
         </el-form-item>
       </el-form>
     </template>
-    <!-- <pre>{{ factors }}</pre> -->
+    <!-- <pre>picknums: {{ picknums }}</pre> -->
+    <!-- <pre>factors: {{ factors }}</pre> -->
   </div>
 </template>
 
@@ -32,6 +40,12 @@ export default {
       type: Array,
       default() {
         return []
+      }
+    },
+    pickNumOptions: {
+      type: Object,
+      default() {
+        return {}
       }
     },
     dataFactors: {
@@ -57,18 +71,25 @@ export default {
   },
   watch: {
     factorsSelected: {
-      // deep: true,
-      // immediate: true,
+      deep: true,
+      immediate: true,
       handler: function (newVal, oldVal) {
-        const minVal = Math.min(...Object.values(this.picknums))
+        const autoVal = i => {
+          const factorCount = Object.keys(this.picknums).length
+          if (factorCount > 0) {
+            return Math.min(...Object.values(this.picknums))
+          }
+          return 60
+        }
+
         this.picknums = this.factorsSelected.reduce((o, k, i) => {
-          o[k] = this.picknums[k] ? this.picknums[k] : Math.max(minVal - 1, 1)
+          o[k] = this.picknums[k] ? this.picknums[k] : Math.max(autoVal() - 10, 5)
           return o
         }, {})
       }
     },
     picknums: {
-      // deep: true,
+      deep: true,
       immediate: true,
       handler: function (val) { this.selectorStore.multifactor_sequential.factors = Object.entries(val) }
     }

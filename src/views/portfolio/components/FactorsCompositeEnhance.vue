@@ -80,7 +80,7 @@ export default {
   },
   watch: {
     enhance_factors: {
-      // deep: true,
+      deep: true,
       immediate: true,
       handler: function (val) { this.selectorStore.multifactor_composite.enhance_factors = val }
     },
