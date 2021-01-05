@@ -16,7 +16,8 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
-import * as filters from './filters' // global filters
+import * as filters from '@/filters' // global filters
+import Bus from '@/service/bus' // global event bus
 
 /**
  * If you don't want to use mock-server
@@ -44,6 +45,9 @@ Vue.use(VueScreen, 'bootstrap')
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
+
+// register global event bus
+Vue.use(Bus)
 
 Vue.config.productionTip = false
 
