@@ -31,6 +31,12 @@ export default {
   watch: {
     '$screen.width'(width) {
       this.collapsed = width < 992
+    },
+    collapsed: {
+      immediate: true,
+      handler() {
+        this.$bus.$emit('toggle-left-panle')
+      }
     }
   }
 }

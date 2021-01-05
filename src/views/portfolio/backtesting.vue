@@ -39,7 +39,7 @@
       <section class="section">
         <h3>日级累计收益图</h3>
         <div class="highcharts-container">
-          <highcharts v-if="return_curve" :options="chartOptions" />
+          <highcharts v-if="return_curve" ref="return-curve-chart" :options="chartOptions" />
         </div>
       </section>
 
@@ -122,6 +122,12 @@ export default {
   },
 
   props: {
+    resizeEvent: {
+      type: Event,
+      default() {
+        return new Event('resize')
+      }
+    },
     options: {
       type: Object,
       default() {
@@ -191,6 +197,16 @@ export default {
       return isString ? JSON.parse(options) : options
     }
 
+  },
+
+  mounted() {
+    this.$bus.$on('toggle-left-panle', this.reflowChart)
+    this.$bus.$on('toggle-sidebar', this.reflowChart)
+  },
+
+  beforeDestroy() {
+    this.$bus.$off('toggle-left-panle')
+    this.$bus.$off('toggle-sidebar')
   },
 
   methods: {
@@ -273,6 +289,16 @@ export default {
       }
       const [symbol, weight] = cellValue.split(':')
       return `${symbol} ${weight}`
+    },
+
+    reflowChart() {
+      if ('return-curve-chart' in this.$refs) {
+        setTimeout(() => {
+          // window.dispatchEvent(this.resizeEvent)
+          const { chart } = this.$refs['return-curve-chart']
+          chart.reflow()
+        }, 300)
+      }
     }
   }
 }

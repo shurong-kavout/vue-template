@@ -54,6 +54,7 @@ export default {
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
+      this.$bus.$emit('toggle-sidebar')
     },
     async logout() {
       await this.$store.dispatch('user/logout')
