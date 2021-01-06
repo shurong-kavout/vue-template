@@ -85,8 +85,8 @@
         </el-table>
       </section>
 
-      <section class="section">
-        <pre>{{ apiParams }}</pre>
+      <section v-if="code" class="section">
+        <json-viewer :value="code" :expand-depth="5" boxed expanded />
       </section>
     </div>
   </div>
@@ -94,6 +94,7 @@
 
 <script>
 import { Chart } from 'highcharts-vue'
+import JsonViewer from 'vue-json-viewer'
 import LeftPanel from './components/LeftPanel'
 import options from './constant/form-options'
 import params from './constant/default-backtester'
@@ -108,6 +109,7 @@ export default {
   name: 'Backtesting',
 
   components: {
+    JsonViewer,
     LeftPanel,
     Selector,
     Allocator,
@@ -145,7 +147,7 @@ export default {
     return {
       universe: [strategy_region, strategy_universe[strategy_region]],
       selector, backtester, allocator,
-      apiParams: null,
+      code: null,
       returns: [],
       y_returns: [],
       m_returns: [],
@@ -255,12 +257,12 @@ export default {
     },
 
     debug() {
-      this.apiParams = this.assembleParams()
+      this.code = this.assembleParams()
     },
 
     fetchData() {
-      const apiParams = this.assembleParams()
-      fetchBacktesting(apiParams)
+      const code = this.assembleParams()
+      fetchBacktesting(code)
         .then(resp => {
           if (resp.code === 0) {
             const {

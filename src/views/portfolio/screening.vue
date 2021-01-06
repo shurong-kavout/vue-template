@@ -58,14 +58,15 @@
         </el-table>
       </section>
 
-      <section class="section">
-        <pre>{{ apiParams }}</pre>
+      <section v-if="code" class="section">
+        <json-viewer :value="code" :expand-depth="5" boxed expanded />
       </section>
     </div>
   </div>
 </template>
 
 <script>
+import JsonViewer from 'vue-json-viewer'
 import LeftPanel from './components/LeftPanel'
 import options from './constant/form-options'
 import params from './constant/default-screener'
@@ -81,6 +82,7 @@ export default {
   name: 'Screening',
 
   components: {
+    JsonViewer,
     LeftPanel,
     Selector,
     Allocator,
@@ -110,7 +112,7 @@ export default {
     return {
       universe: [strategy_region, strategy_universe[strategy_region]], date,
       selector, backtester, allocator,
-      apiParams: null,
+      code: null,
       data: []
     }
   },
@@ -174,13 +176,13 @@ export default {
     },
 
     debug() {
-      this.apiParams = this.assembleParams()
+      this.code = this.assembleParams()
     },
 
     async fetchData() {
       try {
-        const apiParams = this.assembleParams()
-        const resp = await fetchScreening(apiParams)
+        const code = this.assembleParams()
+        const resp = await fetchScreening(code)
         if (resp && resp.code === 0) {
           this.data = resp.data
         }
