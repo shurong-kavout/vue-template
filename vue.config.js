@@ -70,6 +70,10 @@ module.exports = {
       }
     ])
 
+    // debug in safari
+    if (process.env.NODE_ENV === 'development') {
+      config.plugins.delete('preload')
+    }
     // when there are many pages, it will cause too many meaningless requests
     config.plugins.delete('prefetch')
 
