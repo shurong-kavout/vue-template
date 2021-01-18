@@ -3,11 +3,12 @@
   flex-shrink: 0;
   width: 21rem;
   padding: 2rem 1rem;
-  overflow: auto;
-  z-index: 10;
+  z-index: 1000;
   background-color: #f4f6fa;
   border-right: 2px solid #f0f2f5;
   box-shadow: -2px 0 4px rgba(0, 21, 41, 0.08);
+
+  overflow-y: auto;
   overflow-x: hidden;
 
   transition: margin-left 0.3s;
@@ -50,6 +51,10 @@
 
   &.collapsed {
     margin-left: -21rem;
+
+    // 修复 Safari 下 fixed 元素（LeftPanel 的 open 按钮）不显示问题
+    overflow-x: visible;
+    overflow-y: visible;
 
     .handler.open {
       visibility: visible;
