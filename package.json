@@ -26,7 +26,7 @@
     "nprogress": "0.2.0",
     "path-to-regexp": "2.4.0",
     "regenerator-runtime": "^0.13.7",
-    "vue": "2.6.10",
+    "vue": "3.0.0",
     "vue-json-viewer": "^2.2.17",
     "vue-router": "3.0.6",
     "vue-screen": "^1.5.3",
